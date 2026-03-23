@@ -4,7 +4,7 @@ import { MdLogout } from "react-icons/md";
 export default function profile () {
     return (
         <main className="min-h-screen flex justify-center py-10 px-5">
-            <div className="w-full md:w-90 md:max-h-140 runded shadow-md px-5 py-4">
+            <div className="w-full md:w-90 md:max-h-140 rounded shadow-md px-5 py-4">
                 <h1 className="text-center font-semibold text-xl">Profile Details</h1>
                 <div className="flex justify-center">
                     <Image
@@ -15,7 +15,7 @@ export default function profile () {
                     className="w-20 h-20 rounded-full"
                     />
                 </div>
-                <div className="px-5 py-5 flex flex-col gap-4 mt-8 w-80 h-60 rounded-md">
+                <div className="px-5 py-5 flex flex-col gap-4 mt-8 w-80 h-60 rounded-md shadow-md">
                     <div className="flex justify-between itemscenter ">
                         <p className="font-semibold">Full Name</p>
                         <p className="text-gray-600 text-xs">Praise Henry</p>
@@ -39,7 +39,7 @@ export default function profile () {
                 </div>
                 <form className="mt-5">
                     <button type="submit" className="bg-red-500 text-white w-30 h-10 cursor-pointer rounded flex justify-center items-center">
-                        <MdLogout className="text-2xl" />
+                        <MdLogout className="text-2xl"/>
                         <span className="ml-1">Logout</span>
                     </button>
                 </form>

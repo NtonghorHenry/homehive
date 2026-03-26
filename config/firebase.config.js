@@ -3,7 +3,6 @@ import { getApp, getApps, initializeApp } from "firebase/app";
 import { getFirestore } from "firebase/firestore";
 import {getStorage} from "firebase/storage";
 
-
 // Your web app's Firebase configuration
 const firebaseConfig = {
   apiKey:process.env.FIREBASE_API_KEY,

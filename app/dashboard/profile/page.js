@@ -1,7 +1,14 @@
+import { auth, signOut } from "@/auth";
 import Image from "next/image"
+import { redirect } from "next/navigation";
 import { MdLogout } from "react-icons/md";
 
-export default function profile () {
+export default async function profile () {
+    const session = await auth()
+    console.log(session);
+    if(!session?.user){
+        redirect("/auth/signin")
+    }
     return (
         <main className="min-h-screen flex justify-center py-10 px-5">
             <div className="w-full md:w-90 md:max-h-140 rounded shadow-md px-5 py-4">
@@ -18,15 +25,15 @@ export default function profile () {
                 <div className="px-5 py-5 flex flex-col gap-4 mt-8 w-80 h-60 rounded-md shadow-md">
                     <div className="flex justify-between itemscenter ">
                         <p className="font-semibold">Full Name</p>
-                        <p className="text-gray-600 text-xs">Praise Henry</p>
+                        <p className="text-gray-600 text-xs">{session?.user?.name}</p>
                     </div>
                     <div className="flex justify-between items-center">
                         <p className="font-semibold">Email</p>
-                        <p className="text-gray-600 text-xs">Praise@gmail.com</p>
+                        <p className="text-gray-600 text-xs">{session?.user?.email}</p>
                     </div>
                     <div className="flex justify-between items-center">
                         <p className="font-semibold">Phone Number</p>
-                        <p className="text-gray-600 text-xs">+234 701 7146 177 </p> 
+                        <p className="text-gray-600 text-xs">+234 701 7146 177</p> 
                     </div>
                     <div className="flex justify-between items-center">
                         <p className="font-semibold">Address</p>
@@ -37,7 +44,11 @@ export default function profile () {
                         <p className="text-gray-600 text-xs">Male</p> 
                     </div>
                 </div>
-                <form className="mt-5">
+                <form action={async()=>{
+                    "use server"
+                    await signOut()
+                }}
+                className="mt-5">
                     <button type="submit" className="bg-red-500 text-white w-30 h-10 cursor-pointer rounded flex justify-center items-center">
                         <MdLogout className="text-2xl"/>
                         <span className="ml-1">Logout</span>
